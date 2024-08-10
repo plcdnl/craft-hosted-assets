@@ -1,0 +1,13 @@
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.autoSuggestField({
+    first: true,
+    label: "Volume Handle"|t('_hosted-videos'),
+    instructions: "The handle of the volume where the hosted video assets are stored."|t('_hosted-videos'),
+    id: 'volumeHandle',
+    name: 'volumeHandle',
+    value: settings.volumeHandle,
+    errors: settings.getErrors('volumeHandle'),
+    suggestEnvVars: true,
+    required: true,
+}) }}
