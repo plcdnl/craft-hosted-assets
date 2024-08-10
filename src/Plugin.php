@@ -43,8 +43,8 @@ class Plugin extends BasePlugin
 
     private function attachEventHandlers(): void
     {
-        Event::on(View::class, View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE, function(TemplateEvent $event) {
-            if ($event->template === 'assets/_index') {
+        Event::on(View::class, View::EVENT_BEFORE_RENDER_TEMPLATE, function(TemplateEvent $event) {
+            if ($event->template === 'assets/_index' || $event->template === '_components/fieldtypes/Assets/input.twig') {
                 $event->sender->registerAssetBundle(AssetIndexAsset::class);
             }
         });

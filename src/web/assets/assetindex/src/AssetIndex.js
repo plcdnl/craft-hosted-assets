@@ -43,7 +43,13 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
             folderId: currentFolder.folderId,
           };
 
-          thisArg.$createButton.addClass("loading");
+          const inModal = thisArg.$createButton.closest(".modal").length > 0;
+
+          if (inModal) {
+            thisArg.setIndexBusy();
+          } else {
+            thisArg.$createButton.addClass("loading");
+          }
 
           Craft.sendActionRequest(
             "POST",
@@ -51,13 +57,21 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
             { data },
           )
             .then((response) => {
-              Craft.redirectTo(response.data.cpEditUrl);
+              if (inModal) {
+                thisArg.setIndexAvailable();
+                thisArg.updateElements();
+                thisArg.selectElementAfterUpdate(response.data.asset.id);
+              } else {
+                Craft.redirectTo(response.data.cpEditUrl);
+              }
             })
             .catch(({ response }) => {
               Craft.cp.displayError(response.data.message);
             })
             .finally(() => {
-              thisArg.$createButton.removeClass("loading");
+              if (!inModal) {
+                thisArg.$createButton.removeClass("loading");
+              }
             });
         });
       }
