@@ -32,6 +32,10 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
         thisArg.getButtonContainer().prepend(thisArg.$createButton);
 
         thisArg.$createButton.on("click", () => {
+          if (thisArg.$createButton.hasClass("loading")) {
+            return;
+          }
+
           const currentFolder =
             thisArg.sourcePath[thisArg.sourcePath.length - 1];
 
@@ -39,7 +43,7 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
             folderId: currentFolder.folderId,
           };
 
-          thisArg.setIndexBusy();
+          thisArg.$createButton.addClass("loading");
 
           Craft.sendActionRequest(
             "POST",
@@ -47,15 +51,13 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
             { data },
           )
             .then((response) => {
-              thisArg.setIndexAvailable();
-              Craft.cp.displaySuccess(
-                Craft.t("_hosted-videos", "Video created."),
-              );
-              thisArg.updateElements();
+              Craft.redirectTo(response.data.cpEditUrl);
             })
             .catch(({ response }) => {
-              thisArg.setIndexAvailable();
               Craft.cp.displayError(response.data.message);
+            })
+            .finally(() => {
+              thisArg.$createButton.removeClass("loading");
             });
         });
       }

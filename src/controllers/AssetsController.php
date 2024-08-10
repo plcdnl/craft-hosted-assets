@@ -68,6 +68,8 @@ class AssetsController extends Controller
             return $this->asModelFailure($asset);
         }
 
-        return $this->asSuccess();
+        return $this->asModelSuccess($asset, Craft::t('_hosted-videos', 'Video created.'), 'asset', [
+            'cpEditUrl' => $asset->getCpEditUrl(),
+        ]);
     }
 }

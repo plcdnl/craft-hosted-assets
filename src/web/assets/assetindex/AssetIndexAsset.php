@@ -27,7 +27,6 @@ class AssetIndexAsset extends AssetBundle
         if ($view instanceof View) {
             $view->registerTranslations('_hosted-videos', [
                 'New video',
-                'Video created.',
             ]);
             
             $settings = Plugin::getInstance()->getSettings();
