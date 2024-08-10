@@ -8,11 +8,14 @@ class Settings extends Model
 {
     public string $volumeHandle = 'videos';
 
+    public bool $hideUploadButton = true;
+
     protected function defineRules(): array
     {
         $rules = parent::defineRules();
 
-        $rules[] = [['volumeHandle'], 'required'];
+        $rules[] = [['volumeHandle', 'hideUploadButton'], 'required'];
+        $rules[] = [['hideUploadButton'], 'boolean'];
 
         return $rules;
     }

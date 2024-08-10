@@ -29,16 +29,17 @@ class AssetIndexAsset extends AssetBundle
                 'New video',
                 'Video created.',
             ]);
+            
+            $settings = Plugin::getInstance()->getSettings();
+            $volumeHandle = App::parseEnv($settings->volumeHandle);
+            $hideUploadButton = $settings->hideUploadButton;
+    
+            $view->registerJsWithVars(fn($volumeHandle, $hideUploadButton) => <<<JS
+                Craft.HostedVideos = {
+                  volumeHandle: $volumeHandle,
+                  hideUploadButton: $hideUploadButton,
+                };
+            JS, [$volumeHandle, $hideUploadButton], View::POS_HEAD);
         }
-
-        $volumeHandle = App::parseEnv(Plugin::getInstance()->getSettings()->volumeHandle);
-
-        $js = <<<JS
-            Craft.HostedVideos = {
-              volumeHandle: "$volumeHandle"
-            };
-        JS;
-
-        $view->registerJs($js, View::POS_HEAD);
     }
 }

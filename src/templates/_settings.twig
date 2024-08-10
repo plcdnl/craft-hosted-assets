@@ -11,3 +11,10 @@
     suggestEnvVars: true,
     required: true,
 }) }}
+
+{{ forms.lightSwitchField({
+    label: "Hide Upload Button",
+    id: 'hideUploadButton',
+    name: 'hideUploadButton',
+    on: settings.hideUploadButton,
+}) }}

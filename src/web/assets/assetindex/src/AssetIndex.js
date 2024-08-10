@@ -18,6 +18,10 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
         thisArg.$source.data("volume-handle") ===
         Craft.HostedVideos.volumeHandle
       ) {
+        if (Craft.HostedVideos.hideUploadButton) {
+          thisArg.$uploadButton?.remove();
+        }
+
         thisArg.$createButton = $("<button/>", {
           type: "button",
           class: "btn submit",
