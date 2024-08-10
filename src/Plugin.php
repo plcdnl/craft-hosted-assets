@@ -6,6 +6,8 @@ use Craft;
 use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
 use craft\events\TemplateEvent;
+use craft\helpers\ArrayHelper;
+use craft\models\Volume;
 use craft\web\View;
 use thomasvantuycom\crafthostedvideos\models\Settings;
 use thomasvantuycom\crafthostedvideos\web\assets\assetindex\AssetIndexAsset;
@@ -35,9 +37,17 @@ class Plugin extends BasePlugin
 
     protected function settingsHtml(): ?string
     {
+        $volumeOptions = array_map(fn(Volume $volume) => [
+            'label' => $volume->name,
+            'value' => $volume->handle,
+        ], Craft::$app->getVolumes()->getAllVolumes());
+
+        ArrayHelper::multisort($volumeOptions, 'label');
+
         return Craft::$app->view->renderTemplate('_hosted-videos/_settings.twig', [
             'plugin' => $this,
             'settings' => $this->getSettings(),
+            'volumeOptions' => $volumeOptions,
         ]);
     }
 

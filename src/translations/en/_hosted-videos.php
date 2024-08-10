@@ -1,8 +1,10 @@
 <?php
 
 return [
+    'Hide the "Upload files" button on asset index screens.' => 'Hide the "Upload files" button on asset index screens.',
+    'Hide Upload Button' => 'Hide Upload Button',
     'New video' => 'New video',
-    'The handle of the volume where the hosted video assets are stored.' => 'The handle of the volume where the hosted video assets are stored.',
+    'The volumes where the hosted video assets are stored.' => 'The volumes where the hosted video assets are stored.',
     'Video created.' => 'Video created.',
-    'Volume Handle' => 'Volume Handle',
+    'Volumes' => 'Volumes',
 ];

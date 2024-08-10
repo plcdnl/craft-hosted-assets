@@ -1,19 +1,19 @@
 {% import '_includes/forms.twig' as forms %}
 
-{{ forms.autoSuggestField({
+{{ forms.selectizeField({
     first: true,
-    label: "Volume Handle"|t('_hosted-videos'),
-    instructions: "The handle of the volume where the hosted video assets are stored."|t('_hosted-videos'),
-    id: 'volumeHandle',
-    name: 'volumeHandle',
-    value: settings.volumeHandle,
-    errors: settings.getErrors('volumeHandle'),
-    suggestEnvVars: true,
-    required: true,
+    label: "Volumes"|t('_hosted-videos'),
+    instructions: "The volumes where the hosted video assets are stored."|t('_hosted-videos'),
+    id: 'volumeHandles',
+    name: 'volumeHandles',
+    options: volumeOptions,
+    multi: true,
+    values: settings.volumeHandles,
 }) }}
 
 {{ forms.lightSwitchField({
-    label: "Hide Upload Button",
+    label: "Hide Upload Button"|t('_hosted-videos'),
+    instructions: "Hide the \"Upload files\" button on asset index screens."|t('_hosted-videos'),
     id: 'hideUploadButton',
     name: 'hideUploadButton',
     on: settings.hideUploadButton,

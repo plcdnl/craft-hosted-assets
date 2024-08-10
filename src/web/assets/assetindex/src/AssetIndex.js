@@ -15,8 +15,9 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
       thisArg.$createButton?.remove();
 
       if (
-        thisArg.$source.data("volume-handle") ===
-        Craft.HostedVideos.volumeHandle
+        Craft.HostedVideos.volumeHandles.includes(
+          thisArg.$source.data("volume-handle"),
+        )
       ) {
         if (Craft.HostedVideos.hideUploadButton) {
           thisArg.$uploadButton?.remove();

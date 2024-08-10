@@ -3,10 +3,11 @@
 namespace thomasvantuycom\crafthostedvideos\models;
 
 use craft\base\Model;
+use craft\validators\ArrayValidator;
 
 class Settings extends Model
 {
-    public string $volumeHandle = 'videos';
+    public array $volumeHandles = [];
 
     public bool $hideUploadButton = true;
 
@@ -14,7 +15,7 @@ class Settings extends Model
     {
         $rules = parent::defineRules();
 
-        $rules[] = [['volumeHandle', 'hideUploadButton'], 'required'];
+        $rules[] = [['volumeHandles'], ArrayValidator::class];
         $rules[] = [['hideUploadButton'], 'boolean'];
 
         return $rules;

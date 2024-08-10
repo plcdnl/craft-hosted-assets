@@ -2,7 +2,6 @@
 
 namespace thomasvantuycom\crafthostedvideos\web\assets\assetindex;
 
-use craft\helpers\App;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 use craft\web\View;
@@ -30,15 +29,13 @@ class AssetIndexAsset extends AssetBundle
             ]);
             
             $settings = Plugin::getInstance()->getSettings();
-            $volumeHandle = App::parseEnv($settings->volumeHandle);
-            $hideUploadButton = $settings->hideUploadButton;
-    
-            $view->registerJsWithVars(fn($volumeHandle, $hideUploadButton) => <<<JS
+            
+            $view->registerJsWithVars(fn($volumeHandles, $hideUploadButton) => <<<JS
                 Craft.HostedVideos = {
-                  volumeHandle: $volumeHandle,
+                  volumeHandles: $volumeHandles,
                   hideUploadButton: $hideUploadButton,
                 };
-            JS, [$volumeHandle, $hideUploadButton], View::POS_HEAD);
+            JS, [$settings->volumeHandles, $settings->hideUploadButton], View::POS_HEAD);
         }
     }
 }
