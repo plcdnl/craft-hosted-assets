@@ -18,9 +18,14 @@
   "extra": {
     "handle": "_hosted-assets",
     "name": "Hosted Assets",
-    "developer": "Daniele Polacco",
     "documentationUrl": ""
   },
+  "authors": [
+    {
+      "name": "plcdnl",
+      "homepage": "https://plcd.nl/"
+    }
+  ],
   "scripts": {
     "check-cs": "ecs check --ansi",
     "fix-cs": "ecs check --ansi --fix",
