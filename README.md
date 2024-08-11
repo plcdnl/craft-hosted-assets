@@ -1,6 +1,6 @@
-# Hosted Videos
+# Hosted Assets
 
-Manage hosted videos just like regular assets.
+Manage hosted assets just like regular assets.
 
 ## Requirements
 

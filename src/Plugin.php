@@ -1,6 +1,6 @@
 <?php
 
-namespace thomasvantuycom\crafthostedvideos;
+namespace plcdnl\crafthostedvideos;
 
 use Craft;
 use craft\base\Model;
@@ -9,8 +9,8 @@ use craft\events\TemplateEvent;
 use craft\helpers\ArrayHelper;
 use craft\models\Volume;
 use craft\web\View;
-use thomasvantuycom\crafthostedvideos\models\Settings;
-use thomasvantuycom\crafthostedvideos\web\assets\assetindex\AssetIndexAsset;
+use plcdnl\crafthostedvideos\models\Settings;
+use plcdnl\crafthostedvideos\web\assets\assetindex\AssetIndexAsset;
 use yii\base\Event;
 
 /**
@@ -20,7 +20,7 @@ use yii\base\Event;
 class Plugin extends BasePlugin
 {
     public string $schemaVersion = '1.0.0';
-    
+
     public bool $hasCpSettings = true;
 
     public function init(): void
@@ -44,7 +44,7 @@ class Plugin extends BasePlugin
 
         ArrayHelper::multisort($volumeOptions, 'label');
 
-        return Craft::$app->view->renderTemplate('_hosted-videos/_settings.twig', [
+        return Craft::$app->view->renderTemplate('_hosted-assets/_settings.twig', [
             'plugin' => $this,
             'settings' => $this->getSettings(),
             'volumeOptions' => $volumeOptions,
@@ -53,7 +53,7 @@ class Plugin extends BasePlugin
 
     private function attachEventHandlers(): void
     {
-        Event::on(View::class, View::EVENT_BEFORE_RENDER_TEMPLATE, function(TemplateEvent $event) {
+        Event::on(View::class, View::EVENT_BEFORE_RENDER_TEMPLATE, function (TemplateEvent $event) {
             if ($event->template === 'assets/_index' || $event->template === '_components/fieldtypes/Assets/input.twig') {
                 $event->sender->registerAssetBundle(AssetIndexAsset::class);
             }

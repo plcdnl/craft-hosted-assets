@@ -1,6 +1,6 @@
 <?php
 
-namespace thomasvantuycom\crafthostedvideos\models;
+namespace plcdnl\crafthostedvideos\models;
 
 use craft\base\Model;
 use craft\validators\ArrayValidator;

@@ -1,11 +1,11 @@
 <?php
 
-namespace thomasvantuycom\crafthostedvideos\web\assets\assetindex;
+namespace plcdnl\crafthostedvideos\web\assets\assetindex;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 use craft\web\View;
-use thomasvantuycom\crafthostedvideos\Plugin;
+use plcdnl\crafthostedvideos\Plugin;
 
 class AssetIndexAsset extends AssetBundle
 {
@@ -24,12 +24,12 @@ class AssetIndexAsset extends AssetBundle
         parent::registerAssetFiles($view);
 
         if ($view instanceof View) {
-            $view->registerTranslations('_hosted-videos', [
+            $view->registerTranslations('_hosted-assets', [
                 'New video',
             ]);
-            
+
             $settings = Plugin::getInstance()->getSettings();
-            
+
             $view->registerJsWithVars(fn($volumeHandles, $hideUploadButton) => <<<JS
                 Craft.HostedVideos = {
                   volumeHandles: $volumeHandles,

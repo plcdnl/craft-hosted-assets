@@ -1,6 +1,6 @@
 {
-  "name": "thomasvantuycom/craft-hosted-videos",
-  "description": "Manage hosted videos just like regular assets.",
+  "name": "plcdnl/craft-hosted-assets",
+  "description": "Manage hosted assets just like regular assets.",
   "type": "craft-plugin",
   "require": {
     "php": ">=8.2",
@@ -12,12 +12,12 @@
   },
   "autoload": {
     "psr-4": {
-      "thomasvantuycom\\crafthostedvideos\\": "src/"
+      "plcdnl\\crafthostedvideos\\": "src/"
     }
   },
   "extra": {
-    "handle": "_hosted-videos",
-    "name": "Hosted Videos",
+    "handle": "_hosted-assets",
+    "name": "Hosted Assets",
     "developer": "Thomas Vantuycom",
     "documentationUrl": ""
   },

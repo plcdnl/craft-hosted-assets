@@ -2,8 +2,8 @@
 
 {{ forms.selectizeField({
     first: true,
-    label: "Volumes"|t('_hosted-videos'),
-    instructions: "The volumes where the hosted video assets are stored."|t('_hosted-videos'),
+    label: "Volumes"|t('_hosted-assets'),
+    instructions: "The volumes where the hosted video assets are stored."|t('_hosted-assets'),
     id: 'volumeHandles',
     name: 'volumeHandles',
     options: volumeOptions,
@@ -12,8 +12,8 @@
 }) }}
 
 {{ forms.lightSwitchField({
-    label: "Hide Upload Button"|t('_hosted-videos'),
-    instructions: "Hide the \"Upload files\" button on asset index screens."|t('_hosted-videos'),
+    label: "Hide Upload Button"|t('_hosted-assets'),
+    instructions: "Hide the \"Upload files\" button on asset index screens."|t('_hosted-assets'),
     id: 'hideUploadButton',
     name: 'hideUploadButton',
     on: settings.hideUploadButton,

@@ -5,6 +5,6 @@ return [
     'Hide Upload Button' => 'Hide Upload Button',
     'New video' => 'New video',
     'The volumes where the hosted video assets are stored.' => 'The volumes where the hosted video assets are stored.',
-    'Video created.' => 'Video created.',
+    'Asset created.' => 'Asset created.',
     'Volumes' => 'Volumes',
 ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace thomasvantuycom\crafthostedvideos\controllers;
+namespace plcdnl\crafthostedvideos\controllers;
 
 use Craft;
 use craft\elements\Asset;
@@ -68,7 +68,7 @@ class AssetsController extends Controller
             return $this->asModelFailure($asset);
         }
 
-        return $this->asModelSuccess($asset, Craft::t('_hosted-videos', 'Video created.'), 'asset', [
+        return $this->asModelSuccess($asset, Craft::t('_hosted-assets', 'Asset created.'), 'asset', [
             'cpEditUrl' => $asset->getCpEditUrl(),
         ]);
     }

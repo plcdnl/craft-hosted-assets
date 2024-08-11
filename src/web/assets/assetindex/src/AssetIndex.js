@@ -27,7 +27,7 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
           type: "button",
           class: "btn submit",
           "data-icon": "plus",
-          text: Craft.t("_hosted-videos", "New video"),
+          text: Craft.t("_hosted-assets", "New video"),
         });
 
         thisArg.getButtonContainer().prepend(thisArg.$createButton);
@@ -54,7 +54,7 @@ Craft.AssetIndex.prototype.createUploadInputs = new Proxy(
 
           Craft.sendActionRequest(
             "POST",
-            "_hosted-videos/assets/create-hosted-video",
+            "_hosted-assets/assets/create-hosted-video",
             { data },
           )
             .then((response) => {
